@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Post } from "../shared/poster.model";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-movie-feed',
