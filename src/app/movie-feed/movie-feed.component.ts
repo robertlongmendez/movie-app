@@ -11,8 +11,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 export class MovieFeedComponent implements OnInit {
   posts: Post[] = [];
-  private feedSelected = '';
+  private feedSelected = 'now_playing';
   private nextPage = '1';
+  yesFeedSelected = false;
 
   constructor(private http: HttpClient, private router: Router,
     private route: ActivatedRoute) {}
@@ -30,6 +31,7 @@ export class MovieFeedComponent implements OnInit {
     this.http
       .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=1')
       .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+      this.yesFeedSelected = true;
     return this.feedSelected;
   }
 
@@ -38,6 +40,7 @@ export class MovieFeedComponent implements OnInit {
     this.http
       .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=5')
       .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+      this.yesFeedSelected = true;
       return this.feedSelected;
 
   }
@@ -47,16 +50,29 @@ export class MovieFeedComponent implements OnInit {
     this.http
     .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=1')
     .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+    this.yesFeedSelected = true;
     return this.feedSelected;
 
   }
 
+  // onNextPage() {
+  //    +this.nextPage;
+  //   this.nextPage = this.nextPage + 1;
+  //   this.http
+  //   .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page='+ this.nextPage)
+  //   .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+  //   return this.nextPage;
+  // }
+
   onNextPage() {
-    this.nextPage = this.nextPage + '1';
-    this.http
-    .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page='+ this.nextPage)
-    .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
-  }
+   parseInt(this.nextPage);
+   this.nextPage + 1;
+   this.nextPage.toString()
+   this.http
+   .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page='+ this.nextPage)
+   .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+   return this.nextPage;
+ }
 }
 
 
