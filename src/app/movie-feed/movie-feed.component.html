@@ -1,7 +1,6 @@
 <div class="container-fluid">
   <h1 style="text-align:center;">Movie Feed</h1>
 
-  <ul class="nav justify-content-end">
     <div ngbDropdown class="d-inline-block">
       <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Select Feed</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -10,6 +9,7 @@
         <button ngbDropdownItem (click)="onSelectUpcoming()">Upcoming</button>
       </div>
     </div>
+    <button class="btn btn-outline-primary" (click)="onNextPage()">Next Page</button>
 
 
     <div class="container-fluid itemconfiguration">
