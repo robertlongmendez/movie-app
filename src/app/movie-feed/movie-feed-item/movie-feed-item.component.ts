@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Movie } from 'src/app/movies/movie.model';
+import { MovieService } from 'src/app/movies/movie.service';
 
 @Component({
   selector: 'app-movie-feed-item',
@@ -11,10 +13,13 @@ export class MovieFeedItemComponent {
   @Input() poster: string;
   @Input() date: string;
 
+
 constructor() {}
 
 
 
-onAddMovieToList() {}
+// onAddMovieToList() {
+//   this.movieService.addMovie();
 
+// }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Post } from "../shared/poster.model";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-movie-feed',
@@ -10,14 +11,38 @@ import { Post } from "../shared/poster.model";
 
 export class MovieFeedComponent implements OnInit {
   posts: Post[] = [];
+  private feedSelected = 'popular';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router,
+    private route: ActivatedRoute) {}
 
 
    ngOnInit() {
     this.http
-      .get<Post[]>('https://api.themoviedb.org/3/movie/popular?api_key=97b2f2c2656e5a8bc166291808c8c4b2')
+      .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=5')
       .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+
+  }
+
+  onSelectNowPlaying() {
+    this.feedSelected = 'now_playing';
+    this.http
+      .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=5')
+      .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+  }
+
+  onSelectPopular() {
+    this.feedSelected = 'popular';
+    this.http
+      .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=5')
+      .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+  }
+
+  onSelectUpcoming() {
+    this.feedSelected = 'upcoming';
+    this.http
+    .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=5')
+    .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
 
   }
 }
