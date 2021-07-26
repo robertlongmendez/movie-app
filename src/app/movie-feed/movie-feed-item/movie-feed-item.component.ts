@@ -10,4 +10,11 @@ export class MovieFeedItemComponent {
   @Input() content: string;
   @Input() poster: string;
   @Input() date: string;
+
+constructor() {}
+
+
+
+onAddMovieToList() {}
+
 }
