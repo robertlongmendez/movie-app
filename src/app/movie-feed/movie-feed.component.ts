@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class MovieFeedComponent implements OnInit {
   posts: Post[] = [];
   private feedSelected = 'now_playing';
-  private nextPage = '1';
+  private nextPage = 1;
   yesFeedSelected = false;
 
   constructor(private http: HttpClient, private router: Router,
@@ -65,13 +65,25 @@ export class MovieFeedComponent implements OnInit {
   // }
 
   onNextPage() {
-   parseInt(this.nextPage);
-   this.nextPage + 1;
-   this.nextPage.toString()
+   for (let i = 1; i < this.nextPage; i++);
+   this.nextPage = this.nextPage + 1;
+  //  parseInt(this.nextPage.toString());
+  //  this.nextPage.toString()
    this.http
    .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page='+ this.nextPage)
    .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
    return this.nextPage;
+ }
+
+ onPreviousPage() {
+  for (let i = 1; i < this.nextPage; i++);
+  this.nextPage = this.nextPage - 1;
+ //  parseInt(this.nextPage.toString());
+ //  this.nextPage.toString()
+  this.http
+  .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page='+ this.nextPage)
+  .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+  return this.nextPage;
  }
 }
 
