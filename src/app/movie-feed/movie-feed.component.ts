@@ -12,8 +12,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class MovieFeedComponent implements OnInit {
   posts: Post[] = [];
   private feedSelected = 'now_playing';
-  private nextPage = 1;
+  nextPage = 1;
   yesFeedSelected = false;
+  yesPreviousPage = false;
 
   constructor(private http: HttpClient, private router: Router,
     private route: ActivatedRoute) {}
@@ -72,6 +73,7 @@ export class MovieFeedComponent implements OnInit {
    this.http
    .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page='+ this.nextPage)
    .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
+   this.yesPreviousPage = true;
    return this.nextPage;
  }
 
