@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSaveData() {
+  onSaveData() {debugger
     this.dataStorageService.storeMovies();
-debugger
+
   }
 
   onFetchData() {
