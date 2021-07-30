@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MovieService } from '../movie.service';
+import { Movie } from '../movie.model';
 
 @Component({
   selector: 'app-movie-edit',
@@ -33,7 +34,14 @@ movieForm: FormGroup;
     if (this.editMode) {
       this.movieService.updateMovie(this.id, this.movieForm.value);
     } else {
-      this.movieService.addMovie(this.movieForm.value);
+        const newMovie = new Movie(
+          this.movieForm.value['name'],
+          this.movieForm.value['description'],
+          this.movieForm.value['imagePath'],
+          this.movieForm.value['date']
+        )
+
+      this.movieService.addMovie(newMovie);
     }
     this.onCancel();
   }

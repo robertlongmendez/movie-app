@@ -33,7 +33,7 @@ export class MovieFeedComponent implements OnInit {
       .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page=1')
       .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
       this.yesFeedSelected = true;
-    return this.feedSelected;
+    // return this.feedSelected;
   }
 
   onSelectPopular() {

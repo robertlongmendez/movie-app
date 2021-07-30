@@ -7,19 +7,15 @@ import { Movie } from '../movies/movie.model';
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
-
-
   constructor(private http: HttpClient, private movieService: MovieService) {}
-
-
 
     storeMovies() {
       const movies = this.movieService.getMovies();
       return this.http.put<{ name: string }>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json',
       movies)
-      .subscribe(responseData =>
+      .subscribe(response =>
       {
-        console.log(responseData);
+        console.log(response);
       });
     }
 

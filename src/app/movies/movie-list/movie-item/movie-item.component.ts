@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Movie } from '../../movie.model';
 
 @Component({
@@ -10,7 +11,7 @@ export class MovieItemComponent implements OnInit {
   @Input() movie: Movie;
   @Input() index: number;
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 

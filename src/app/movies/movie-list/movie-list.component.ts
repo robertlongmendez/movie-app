@@ -18,23 +18,14 @@ export class MovieListComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.subscription =this.movieService.moviesChanged
     .subscribe(
       (movies: Movie[]) => {
         this.movies = movies;
       }
-    )
-
-    var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
-
-
-this.movies = this.movieService.getMovies();
+    );
+  this.movies = this.movieService.getMovies();
   }
 
   onNewMovie() {

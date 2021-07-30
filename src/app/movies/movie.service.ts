@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Facts } from '../shared/facts.model';
 import { Movie } from './movie.model';
 
 @Injectable({providedIn: 'root'})
@@ -32,12 +31,12 @@ export class MovieService {
 
   constructor() {}
 
-  setMovies(movies: Movie[]) {
+  setMovies(movies: Movie[]) {debugger;
     this.movies = movies;
     this.moviesChanged.next(this.movies.slice());
   }
 
-  getMovies() {
+  getMovies() {debugger;
     return this.movies.slice();
   }
 
@@ -59,7 +58,7 @@ export class MovieService {
     this.moviesChanged.next(this.movies.slice());
   }
 
-  addMovie(movie: Movie) {
+  addMovie(movie: Movie) {debugger;
     this.movies.push(movie);
     this.moviesChanged.next(this.movies.slice());
   }

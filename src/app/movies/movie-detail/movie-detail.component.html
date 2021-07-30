@@ -14,19 +14,15 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group" appDropdown>
+    <div ngbDropdown class="d-inline-block">
       <button
-      type="button"
-      class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      Manage Movie <span class="caret"></span>
+      class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>
+      Manage Movie
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
-        <li><a class="dropdown-item" style="cursor: pointer;">Add to Watch List</a></li>
-        <li><a class="dropdown-item" style="cursor: pointer;">Add to Seen List</a></li>
-        <li><a class="dropdown-item" style="cursor: pointer;" (click)="onRateMovie()">Rate Movie</a></li>
-        <li><a style="cursor: pointer;" (click)="onDeleteRecipe()">Delete Recipe</a></li>
-
-      </ul>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="onRateMovie()">Rate Movie</button>
+        <button ngbDropdownItem (click)="onDeleteMovie()">Delete</button>
+      </div>
     </div>
   </div>
 </div>
@@ -39,7 +35,7 @@
   <div class="col-xs-12">
     <ul class="list-group">
       <li class="list-group-item" *ngIf="movie">
-        ({{ movie.title.genre }}) - {{ movie.title.filmYear }}
+        {{ movie.date }}
       </li>
     </ul>
   </div>
