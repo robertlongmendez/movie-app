@@ -14,12 +14,18 @@ export class MovieFeedItemComponent {
   @Input() date: string;
 
 
-constructor() {}
+constructor(private movieService: MovieService) {}
 
 
 
-// onAddMovieToList() {
-//   this.movieService.addMovie();
+onAddMovieToList() {
+  const newMovie = new Movie(
+    this.title['name'],
+    this.content['description'],
+    this.poster['imagePath'],
+    this.date['date']
+  )
+  this.movieService.addMovie(newMovie);
 
-// }
+}
 }
