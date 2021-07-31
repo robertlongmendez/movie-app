@@ -18,12 +18,12 @@ constructor(private movieService: MovieService) {}
 
 
 
-onAddMovieToList() {
+onAddMovieToList() {debugger;
   const newMovie = new Movie(
-    this.title['name'],
-    this.content['description'],
-    this.poster['imagePath'],
-    this.date['date']
+    this.title,
+    this.content,
+    this.poster,
+    this.date
   )
   this.movieService.addMovie(newMovie);
 

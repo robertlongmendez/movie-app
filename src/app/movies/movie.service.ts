@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 import { Movie } from './movie.model';
 
 @Injectable({providedIn: 'root'})
 export class MovieService {
+
   moviesChanged = new Subject<Movie[]>()
 
   // private movies: Movie[] = [
@@ -27,6 +29,8 @@ export class MovieService {
   private movies: Movie[] = [];
 
   constructor() {}
+
+
 
   setMovies(movies: Movie[]) {debugger;
     this.movies = movies;
@@ -60,4 +64,8 @@ export class MovieService {
     this.moviesChanged.next(this.movies.slice());
   }
 
+  rateMovie(movie: Movie) {
+;
+
+  }
 }
