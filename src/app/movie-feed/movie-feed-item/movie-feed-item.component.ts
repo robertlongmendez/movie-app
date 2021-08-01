@@ -12,17 +12,20 @@ export class MovieFeedItemComponent {
   @Input() content: string;
   @Input() poster: string;
   @Input() date: string;
+  feedImage = '';
 
 
 constructor(private movieService: MovieService) {}
 
 
 
-onAddMovieToList() {debugger;
+onAddMovieToList() {
+    this.feedImage = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/'+ this.poster;
+
   const newMovie = new Movie(
     this.title,
     this.content,
-    this.poster,
+    this.feedImage,
     this.date
   )
   this.movieService.addMovie(newMovie);

@@ -32,12 +32,12 @@ export class MovieService {
 
 
 
-  setMovies(movies: Movie[]) {debugger;
+  setMovies(movies: Movie[]) {
     this.movies = movies;
     this.moviesChanged.next(this.movies.slice());
   }
 
-  getMovies() {debugger;
+  getMovies() {
     return this.movies.slice();
   }
 
@@ -59,7 +59,7 @@ export class MovieService {
     this.moviesChanged.next(this.movies.slice());
   }
 
-  addMovie(movie: Movie) {debugger;
+  addMovie(movie: Movie) {
     this.movies.push(movie);
     this.moviesChanged.next(this.movies.slice());
   }

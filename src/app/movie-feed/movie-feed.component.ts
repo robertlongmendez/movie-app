@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Post } from "../shared/poster.model";
-import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-movie-feed',
@@ -16,8 +15,7 @@ export class MovieFeedComponent implements OnInit {
   yesFeedSelected = false;
   yesPreviousPage = false;
 
-  constructor(private http: HttpClient, private router: Router,
-    private route: ActivatedRoute) {}
+  constructor(private http: HttpClient) {}
 
 
    ngOnInit() {
@@ -80,8 +78,6 @@ export class MovieFeedComponent implements OnInit {
  onPreviousPage() {
   for (let i = 1; i < this.nextPage; i++);
   this.nextPage = this.nextPage - 1;
- //  parseInt(this.nextPage.toString());
- //  this.nextPage.toString()
   this.http
   .get<Post[]>('https://api.themoviedb.org/3/movie/'+ this.feedSelected +'?api_key=97b2f2c2656e5a8bc166291808c8c4b2&language=en-US&page='+ this.nextPage)
   .subscribe(fetchedPosts => (this.posts = fetchedPosts['results']));
