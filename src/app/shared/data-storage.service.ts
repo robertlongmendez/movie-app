@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators'
+import { map, tap } from 'rxjs/operators'
 
 import { MovieService } from '../movies/movie.service';
 import { Movie } from '../movies/movie.model';
@@ -21,17 +21,18 @@ export class DataStorageService {
 
     fetchMovies() {debugger;
       return this.http.get<Movie[]>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
-      .pipe(
-        map(movies => {
-          return movies.map(movie =>  {
-            return {...movie}
-          });
-        });
-      )tap(this.movieService.setMovies(movies)
-);
-      // .subscribe(movies => {
-      //   console.log(movies);
-      // });
+//       .pipe(
+//         map(movies => {
+//           return movies.map(movie =>  {
+//             return {...movie}
+//           });
+//         }),tap(movies => {}
+// )
+//       );
+      .subscribe(movies => {
+        this.movieService.setMovies(movies)
+        console.log(movies);
+      });
     }
 
 }

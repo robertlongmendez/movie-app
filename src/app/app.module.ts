@@ -21,6 +21,7 @@ import { StreamingComponent } from './movie-feed/streaming/streaming.component';
 import { TrailerComponent } from './movie-feed/trailer/trailer.component';
 import { TrailerModalComponent } from './trailer-modal/trailer-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MovieService } from './movies/movie.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
