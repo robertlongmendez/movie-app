@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
+import { tap } from 'rxjs/operators'
 
 import { MovieService } from '../movies/movie.service';
 import { Movie } from '../movies/movie.model';
@@ -11,7 +11,7 @@ export class DataStorageService {
 
     storeMovies() {
       const movies = this.movieService.getMovies();
-      return this.http.put<{ name: string }>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json',
+      return this.http.put('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json',
       movies)
       .subscribe(response =>
       {
@@ -19,9 +19,23 @@ export class DataStorageService {
       });
     }
 
-    fetchMovies() {
-      return this.http.get<any>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
-      // .pipe(
+    fetchMovies() {debugger;
+      return this.http.get<Movie[]>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
+      .pipe(
+        map(movies => {
+          return movies.map(movie =>  {
+            return {...movie}
+          });
+        });
+      )tap(this.movieService.setMovies(movies)
+);
+      // .subscribe(movies => {
+      //   console.log(movies);
+      // });
+    }
+
+}
+   // .pipe(
       //   map(responseData => {
       //   const moviesArray: Movie[] = [];
       //   for (const key in responseData) {
@@ -32,10 +46,3 @@ export class DataStorageService {
       //   return moviesArray;
       // })
       // )
-      .subscribe(movies => {
-        console.log(movies);
-        // this.movieService.setMovies(movies);
-      });
-    }
-
-}

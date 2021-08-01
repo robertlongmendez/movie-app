@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onFetchData() {
-    this.dataStorageService.fetchMovies()
+    this.dataStorageService.fetchMovies();
   }
 
 }
