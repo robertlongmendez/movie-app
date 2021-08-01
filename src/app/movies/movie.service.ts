@@ -26,7 +26,7 @@ export class MovieService {
   //     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLsLW26rNqWteyo7fIdRfB7-IuGvzXbLnF1zkQ5S1IcDoDrB2HWgyHedrah7vYHqWsQ8&usqp=CAU',
   //     '1989' )
   // ];
-  private movies: Movie[] = [];
+  movies: Movie[] = [];
 
   constructor() {}
 

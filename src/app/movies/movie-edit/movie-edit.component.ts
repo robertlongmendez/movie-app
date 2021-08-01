@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie.model';
 
@@ -14,6 +15,9 @@ export class MovieEditComponent implements OnInit {
 id: number;
 editMode = false;
 movieForm: FormGroup;
+currentRate = 8;
+
+
 
   constructor(private route: ActivatedRoute,
               private movieService: MovieService,
