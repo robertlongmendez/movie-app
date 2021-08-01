@@ -21,19 +21,20 @@ export class DataStorageService {
 
     fetchMovies() {
       return this.http.get<any>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
-      .pipe(
-        map(responseData => {
-        const moviesArray: Movie[] = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            moviesArray.push({ ...responseData[key], id: key })
-          }
-        }
-        return moviesArray;
-      })
-      )
+      // .pipe(
+      //   map(responseData => {
+      //   const moviesArray: Movie[] = [];
+      //   for (const key in responseData) {
+      //     if (responseData.hasOwnProperty(key)) {
+      //       moviesArray.push({ ...responseData[key], id: key })
+      //     }
+      //   }
+      //   return moviesArray;
+      // })
+      // )
       .subscribe(movies => {
-        this.movieService.setMovies(movies);
+        console.log(movies);
+        // this.movieService.setMovies(movies);
       });
     }
 
