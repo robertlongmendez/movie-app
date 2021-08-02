@@ -13,7 +13,7 @@ import { Movie } from '../movie.model';
 })
 export class MovieEditComponent implements OnInit {
 id: number;
-editMode = false;
+public editMode = false;
 movieForm: FormGroup;
 currentRate = 8;
 
@@ -42,7 +42,7 @@ currentRate = 8;
           this.movieForm.value['name'],
           this.movieForm.value['description'],
           this.movieForm.value['imagePath'],
-          this.movieForm.value['date']
+          this.movieForm.value['date'],
         )
 
       this.movieService.addMovie(newMovie);
@@ -65,6 +65,7 @@ currentRate = 8;
           movieName = movie.name;
           movieImagePath = movie.imagePath;
           movieDescription = movie.description;
+          // movieDate = movie.date;
 
     }
 

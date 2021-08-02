@@ -29,6 +29,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   onEditMovie() {
+
     this.router.navigate(['edit'], {relativeTo: this.route })
 
     // this.movieService.rateMovie(this.movie);

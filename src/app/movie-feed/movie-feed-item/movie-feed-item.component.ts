@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+
 import { Movie } from 'src/app/movies/movie.model';
 import { MovieService } from 'src/app/movies/movie.service';
 
@@ -15,7 +18,7 @@ export class MovieFeedItemComponent {
   feedImage = '';
 
 
-constructor(private movieService: MovieService) {}
+constructor(private movieService: MovieService, private modalService: NgbModal) {}
 
 
 
@@ -30,5 +33,9 @@ onAddMovieToList() {
   )
   this.movieService.addMovie(newMovie);
 
+}
+
+openWindowCustomClass(content) {
+  this.modalService.open(content, { windowClass: 'dark-modal' });
 }
 }
