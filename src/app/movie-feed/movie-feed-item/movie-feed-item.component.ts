@@ -35,7 +35,7 @@ onAddMovieToList() {
 
 }
 
-openWindowCustomClass(content) {
-  this.modalService.open(content, { windowClass: 'dark-modal' });
-}
+// openWindowCustomClass(content) {
+//   this.modalService.open(content, { windowClass: 'dark-modal' });
+// }
 }

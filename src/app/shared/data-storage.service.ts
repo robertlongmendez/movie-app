@@ -19,7 +19,7 @@ export class DataStorageService {
       });
     }
 
-    fetchMovies() {debugger;
+    fetchMovies() {
       return this.http.get<Movie[]>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
 //       .pipe(
 //         map(movies => {

@@ -36,6 +36,7 @@ export class MovieService {
   }
 
   getMovies() {
+    debugger;
     return this.movies.slice();
   }
 
