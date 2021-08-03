@@ -30,8 +30,8 @@ export class MovieListComponent implements OnInit {
     // );
 
   this.movies = this.movieService.getMovies();
-  debugger;
-  // console.log(this.movies);
+  // debugger;
+  console.log(this.movies);
   }
 
   onNewMovie() {

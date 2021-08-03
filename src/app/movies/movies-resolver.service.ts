@@ -1,14 +1,17 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRoute, Resolve, RouterStateSnapshot } from "@angular/router";
-import { DataStorageService } from "../shared/data-storage.service";
+//finish building out the resolver
 
-import { Movie } from "./movie.model";
 
-@Injectable({providedIn: 'root'})
-export class MoviesResolverService implements Resolve<Movie[]> {
-  constructor(private dataStorageService: DataStorageService) {}
+// import { Injectable } from "@angular/core";
+// import { ActivatedRoute, Resolve, RouterStateSnapshot } from "@angular/router";
+// import { DataStorageService } from "../shared/data-storage.service";
 
-  resolve(route: ActivatedRoute, state: RouterStateSnapshot) {
+// import { Movie } from "./movie.model";
 
-  }
-}
+// @Injectable({providedIn: 'root'})
+// export class MoviesResolverService implements Resolve<Movie[]> {
+//   constructor(private dataStorageService: DataStorageService) {}
+
+//   resolve(route: ActivatedRoute, state: RouterStateSnapshot) {
+
+//   }
+// }
