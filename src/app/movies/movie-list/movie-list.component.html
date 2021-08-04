@@ -3,7 +3,14 @@
   <div class="row">
     <div class="col-xs-12">
       <button class="btn btn-outline-dark" (click)="onNewMovie()">Create Movie</button> |
-      <button class="btn btn-outline-dark" (click)="onMovieFeed()">Movie Feeds</button>
+      <button class="btn btn-outline-dark" (click)="onMovieFeed()">Movie Feeds</button> |
+      <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Manage</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="onSaveData()">Save Data</button>
+        <button ngbDropdownItem (click)="onFetchData()">Get Data</button>
+      </div>
+    </div>
     </div>
   </div>
 </div>

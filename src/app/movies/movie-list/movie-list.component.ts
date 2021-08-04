@@ -12,7 +12,7 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-  movies: Movie[];
+  movies: Movie[] = [];
   subscription: Subscription;
 
   constructor(private movieService: MovieService,
@@ -21,17 +21,17 @@ export class MovieListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.subscription = this.movieService.moviesChanged
-    // .subscribe(
-    //   (movies: Movie[]) => {
-    //     debugger;
-    //     this.movies = movies;
-    //   }
-    // );
+    this.subscription = this.movieService.moviesChanged
+    .subscribe(
+      (movies: Movie[]) => {
 
-  this.movies = this.movieService.getMovies();
-  // debugger;
-  console.log(this.movies);
+        this.movies = movies;
+      }
+    );
+this.movies = this.movieService.getMovies();
+
+
+
   }
 
   onNewMovie() {
@@ -40,6 +40,15 @@ export class MovieListComponent implements OnInit {
 
   onMovieFeed() {
     this.router.navigate(['movie-feed'], {relativeTo: this.route});
+  }
+
+  onSaveData() {
+    this.dataStore.storeMovies();
+
+  }
+
+  onFetchData() {
+    this.dataStore.fetchMovies();
   }
 
   ngOnDestroy() {

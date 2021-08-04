@@ -7,6 +7,7 @@ import { Movie } from '../movies/movie.model';
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
+
   constructor(private http: HttpClient, private movieService: MovieService) {}
 
     storeMovies() {
@@ -20,15 +21,8 @@ export class DataStorageService {
     }
 
     fetchMovies() {
-      return this.http.get<Movie[]>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
-//       .pipe(
-//         map(movies => {
-//           return movies.map(movie =>  {
-//             return {...movie}
-//           });
-//         }),tap(movies => {}
-// )
-//       );
+      this.http.get<Movie[]>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
+
       .subscribe(movies => {
         this.movieService.setMovies(movies)
         console.log(movies);
@@ -36,14 +30,4 @@ export class DataStorageService {
     }
 
 }
-   // .pipe(
-      //   map(responseData => {
-      //   const moviesArray: Movie[] = [];
-      //   for (const key in responseData) {
-      //     if (responseData.hasOwnProperty(key)) {
-      //       moviesArray.push({ ...responseData[key], id: key })
-      //     }
-      //   }
-      //   return moviesArray;
-      // })
-      // )
+
