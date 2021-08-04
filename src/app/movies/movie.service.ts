@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 import { Movie } from './movie.model';
 
 @Injectable({providedIn: 'root'})
 export class MovieService {
   moviesChanged = new Subject<Movie[]>()
+  sub: Subscription
 
   // private movies: Movie[] = [
   //   new Movie(
@@ -27,7 +28,7 @@ export class MovieService {
   // ];
   private movies: Movie[] = [];
 
-  constructor(private http: HttpClient, private movieserv: MovieService) {}
+  constructor(private http: HttpClient) {}
 
 
 
@@ -37,7 +38,7 @@ export class MovieService {
   }
 
   getMovies() {
-    debugger;
+
     return this.movies.slice();
   }
 
@@ -83,5 +84,9 @@ export class MovieService {
     });
   }
 
-  rateMovie(movie: Movie) {}
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  // rateMovie(movie: Movie) {}
 }
