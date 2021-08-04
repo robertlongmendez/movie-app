@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -26,7 +27,7 @@ export class MovieService {
   // ];
   private movies: Movie[] = [];
 
-  constructor() {}
+  constructor(private http: HttpClient, private movieserv: MovieService) {}
 
 
 
@@ -61,6 +62,25 @@ export class MovieService {
   addMovie(movie: Movie) {
     this.movies.push(movie);
     this.moviesChanged.next(this.movies.slice());
+  }
+
+  storeMovies() {
+    // const movies = this.movieService.getMovies();
+    return this.http.put('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json',
+    this.movies)
+    .subscribe(response =>
+    {
+      console.log(response);
+    });
+  }
+
+  fetchMovies() {
+    this.http.get<Movie[]>('https://movie-database-tool-default-rtdb.firebaseio.com/movies.json')
+
+    .subscribe(movies => {
+      this.setMovies(movies)
+      console.log(movies);
+    });
   }
 
   rateMovie(movie: Movie) {}

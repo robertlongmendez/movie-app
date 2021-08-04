@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 import { Movie } from '../movie.model';
 import { MovieService } from '../movie.service';
@@ -16,7 +15,6 @@ export class MovieListComponent implements OnInit {
   subscription: Subscription;
 
   constructor(private movieService: MovieService,
-              private dataStore: DataStorageService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -43,15 +41,15 @@ this.movies = this.movieService.getMovies();
   }
 
   onSaveData() {
-    this.dataStore.storeMovies();
+    this.movieService.storeMovies();
 
   }
 
   onFetchData() {
-    this.dataStore.fetchMovies();
+    this.movieService.fetchMovies();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.movieService.unsubscribe();
+  // }
 }
