@@ -18,6 +18,7 @@ import { MovieFeedComponent } from './movie-feed/movie-feed.component';
 import { MovieFeedItemComponent } from './movie-feed/movie-feed-item/movie-feed-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieService } from './movies/movie.service';
+import { ChatComponent } from './chat/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MovieService } from './movies/movie.service';
     MovieEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    ChatComponent,
 
   ],
   imports: [
